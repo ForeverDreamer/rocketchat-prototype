@@ -1,0 +1,26 @@
+1.用户注册/登录/忘记密码
+app/ui-login
+
+2.进入general频道
+app/lib/lib/roomTypes
+
+3.侧边栏顶部spotlight搜索
+app/ui-sidenav
+
+--import                                      client/index.js
+  --import                                    client/importPackages.js
+    --import                                  app/ui-sidenav/client/index.js
+      --createTemplateForComponent            app/ui-sidenav/client/sideNav.js
+        --HeaderWithData                      client/sidebar/header/index.js
+          --Search                            client/sidebar/header/actions/Search.js
+            --SearchList                      client/sidebar/search/SearchList.js
+              --useSearchItems                client/sidebar/search/SearchList.js
+                --useSpotlight                client/sidebar/search/SearchList.js
+                  --useMethodData             client/hooks/useMethodData.ts
+                    --useMethod               client/contexts/ServerContext/ServerContext.ts
+                      --callMethod            client/provivers/ServerProvider.js
+                        --wrapMeteorDDPCalls  client/lib/meteorCallWrapper.ts
+
+--API.v1.addRoute  app/api/server/v1/misc.js
+  --methodCall     app/api/server/v1/misc.js
+    --spotlight    server/publications/spotlight.js
